@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Employee {
+  employeeId    Int         @id @default(autoincrement())
+  name          String
+  email         String      @unique
+  password      String?
+  role          String      @default("Employee")
+  phone         String
+  departmentId  Int
+  designationId Int
+  status        String
+  joiningDate   DateTime
+  salary        Float
+  gender        String
+  maritalStatus String
+  address1      String
+  address2      String?
+  pincode       String
+  profileImage  String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  cityId        Int
+  countryId     Int
+  stateId       Int
+  city          City        @relation(fields: [cityId], references: [id])
+  country       Country     @relation(fields: [countryId], references: [id])
+  department    Department  @relation(fields: [departmentId], references: [id])
+  designation   Designation @relation(fields: [designationId], references: [id])
+  state         State       @relation(fields: [stateId], references: [id])
+}
+
+model Department {
+  id        Int        @id @default(autoincrement())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  employees Employee[]
+}
+
+model Designation {
+  id        Int        @id @default(autoincrement())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  employees Employee[]
+}
+
+model Country {
+  id        Int        @id @default(autoincrement())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  employees Employee[]
+  states    State[]
+}
+
+model State {
+  id        Int        @id @default(autoincrement())
+  countryId Int
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  cities    City[]
+  employees Employee[]
+  country   Country    @relation(fields: [countryId], references: [id])
+}
+
+model City {
+  id        Int        @id @default(autoincrement())
+  stateId   Int
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  states    State      @relation(fields: [stateId], references: [id])
+  employees Employee[]
+}

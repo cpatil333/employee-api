@@ -1,0 +1,50 @@
+npm init -y
+npm install express cors dotenv @prisma/client
+npm install -D typescript ts-node-dev @types/node @types/express @types/cors prisma
+npm install bcryptjs
+npm install --save-dev @types/bcryptjs
+npx tsc --init
+npx prisma init
+npm install pg
+
+npm install -D tsx
+
+# DATABASE_URL="postgresql://postgres:abc123@127.0.0.1:5432/employee_db"
+
+// database..
+---This will create the Employee table in PostgreSQL.
+npx prisma migrate dev --name init
+
+--5. Generate the Prisma Client
+npx prisma generate
+
+--delete all files from PostgreSQL
+npx prisma migrate reset
+
+---add new column update..
+npx prisma migrate dev --name add_profile_image
+
+==========
+I need change password
+ALTER USER postgres WITH PASSWORD 'abc123';
+
+--insert database
+
+INSERT INTO public."City" ("name", "stateId", "updatedAt")
+VALUES
+('Mumbai', 1, CURRENT_TIMESTAMP),
+('Pune', 1, CURRENT_TIMESTAMP),
+('Bengaluru', 2, CURRENT_TIMESTAMP);
+
+
+...for Neow PoststresSql -- online database.
+ npx prisma migrate deploy 
+ npx prisma db push 
+ npx prisma generate
+
+ ping ep-proud-base-ax9mjzxf-pooler.c-4.us-east-2.aws.neon.tech           
+
+ for file upload
+ ***************
+npm install cloudinary multer multer-storage-cloudinary
+npm install -D @types/multer
