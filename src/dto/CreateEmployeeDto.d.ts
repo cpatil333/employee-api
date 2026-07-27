@@ -1,0 +1,22 @@
+export type CreateEmployeeDto = {
+    name: string;
+    email: string;
+    password: string;
+    phone: string;
+    role: string;
+    departmentId: number;
+    designationId: number;
+    status: string;
+    joiningDate: Date;
+    salary: number;
+    gender: string;
+    maritalStatus: string;
+    address1: string;
+    address2?: string;
+    countryId: number;
+    stateId: number;
+    cityId: number;
+    pincode: string;
+    profileImage: string | null;
+};
+//# sourceMappingURL=CreateEmployeeDto.d.ts.map

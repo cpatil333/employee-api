@@ -1,0 +1,26 @@
+import type { CreateLogin } from "../dto/CreateLoginDto.js";
+export declare const getLogin: (login: CreateLogin) => Promise<{
+    employeeId: number;
+    name: string;
+    email: string;
+    password: string | null;
+    role: string;
+    phone: string;
+    departmentId: number;
+    designationId: number;
+    status: string;
+    joiningDate: Date;
+    salary: number;
+    gender: string;
+    maritalStatus: string;
+    address1: string;
+    address2: string | null;
+    pincode: string;
+    profileImage: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    cityId: number;
+    countryId: number;
+    stateId: number;
+} | null>;
+//# sourceMappingURL=login.service.d.ts.map

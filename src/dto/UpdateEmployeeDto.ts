@@ -17,5 +17,5 @@ export type UpdateEmployeeDto = {
   stateId: number;
   cityId: number;
   pincode: string;
-  profileImage: string | null;;
+  profileImage: string | null;
 };

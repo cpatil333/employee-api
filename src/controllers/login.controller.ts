@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { getLogin } from "../services/login.service.js";
 import type { CreateLogin } from "../dto/CreateLoginDto.js";
 import prisma from "../../prisma/prisma.js";
-import bcrypt from "bcryptjs";
+import * as bcrypt from "bcrypt";
 
 export const fetchLogin = async (req: Request, res: Response) => {
   try {
@@ -24,10 +24,9 @@ export const fetchLogin = async (req: Request, res: Response) => {
     };
 
     const isPasswordValid = await bcrypt.compare(
-      req.body.password,
-      existingEmployee.password,
+      String(req.body.password),
+      String(existingEmployee.password),
     );
-
     if (!isPasswordValid) {
       return res.status(400).json({
         message: "Invalid email or password.",
