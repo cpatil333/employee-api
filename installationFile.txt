@@ -23,6 +23,7 @@ npx prisma migrate reset
 
 ---add new column update..
 npx prisma migrate dev --name add_profile_image
+npx prisma migrate dev --name add_reset_password
 
 ==========
 I need change password

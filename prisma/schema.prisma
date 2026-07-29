@@ -8,33 +8,35 @@ datasource db {
 }
 
 model Employee {
-  employeeId    Int         @id @default(autoincrement())
-  name          String
-  email         String      @unique
-  password      String?
-  role          String      @default("Employee")
-  phone         String
-  departmentId  Int
-  designationId Int
-  status        String
-  joiningDate   DateTime
-  salary        Float
-  gender        String
-  maritalStatus String
-  address1      String
-  address2      String?
-  pincode       String
-  profileImage  String?
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  cityId        Int
-  countryId     Int
-  stateId       Int
-  city          City        @relation(fields: [cityId], references: [id])
-  country       Country     @relation(fields: [countryId], references: [id])
-  department    Department  @relation(fields: [departmentId], references: [id])
-  designation   Designation @relation(fields: [designationId], references: [id])
-  state         State       @relation(fields: [stateId], references: [id])
+  employeeId       Int         @id @default(autoincrement())
+  name             String
+  email            String      @unique
+  password         String?
+  role             String      @default("Employee")
+  phone            String
+  departmentId     Int
+  designationId    Int
+  status           String
+  joiningDate      DateTime
+  salary           Float
+  gender           String
+  maritalStatus    String
+  address1         String
+  address2         String?
+  pincode          String
+  profileImage     String?
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  cityId           Int
+  countryId        Int
+  stateId          Int
+  city             City        @relation(fields: [cityId], references: [id])
+  country          Country     @relation(fields: [countryId], references: [id])
+  department       Department  @relation(fields: [departmentId], references: [id])
+  designation      Designation @relation(fields: [designationId], references: [id])
+  state            State       @relation(fields: [stateId], references: [id])
+  resetToken       String?
+  resetTokenExpiry DateTime?
 }
 
 model Department {

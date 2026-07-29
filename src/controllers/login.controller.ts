@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { getLogin } from "../services/login.service.js";
+import { forgotPassword, getLogin } from "../services/login.service.js";
 import type { CreateLogin } from "../dto/CreateLoginDto.js";
 import prisma from "../../prisma/prisma.js";
 import * as bcrypt from "bcrypt";
@@ -48,6 +48,31 @@ export const fetchLogin = async (req: Request, res: Response) => {
   } catch (error) {
     return res.status(500).json({
       message: "Login failed",
+      error,
+    });
+  }
+};
+
+export const getForgetPassword = async (req: Request, res: Response) => {
+  try {
+    const existingEmployee = await prisma.employee.findUnique({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!existingEmployee) {
+      return res.status(400).json({
+        message: "Invalid email.",
+      });
+    }
+
+    const password = await forgotPassword(existingEmployee.email);
+
+    return res.status(201).json(password);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Invalid email.",
       error,
     });
   }
