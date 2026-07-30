@@ -68,7 +68,6 @@ export const updateDepartment = async (req: Request, res: Response) => {
 
 export const deleteDepartment = async (req: Request, res: Response) => {
   try {
-    console.log(req.params.id);
     const departmentId = Number(req.params.id);
 
     const deparment = await removeDepartment(departmentId);

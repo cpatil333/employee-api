@@ -20,16 +20,14 @@ export const getEmployeeById = async (employeeId: number) => {
 };
 
 export const addEmployee = async (employee: CreateEmployeeDto) => {
-  //console.log(employee);
   const newEmployee = await prisma.employee.create({
     data: employee,
   });
-  // console.log(newEmployee);
+
   return newEmployee;
 };
 
 export const udpateEmployee = async (employee: UpdateEmployeeDto) => {
-  // console.log(employee);
   const { employeeId, ...employeeData } = employee;
 
   const updateEmployee = await prisma.employee.update({

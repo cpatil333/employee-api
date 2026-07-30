@@ -73,7 +73,7 @@ export const createEmployee = async (req, res) => {
 };
 export const updateEmployee = async (req, res) => {
     try {
-        // console.log(req.body);
+
         const employee = {
             ...req.body,
             employeeId: Number(req.params.employeeId),

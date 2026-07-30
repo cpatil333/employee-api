@@ -23,7 +23,6 @@ export const addDepartment = async (depatment) => {
     return newDepartment;
 };
 export const editDepartment = async (depatment) => {
-    //console.log(depatment);
     try {
         const { id, ...depatmentData } = depatment;
         const updateDepartment = await prisma.department.update({
@@ -32,7 +31,7 @@ export const editDepartment = async (depatment) => {
             },
             data: depatmentData,
         });
-        console.log(updateDepartment);
+        ;
         return updateDepartment;
     }
     catch (error) {

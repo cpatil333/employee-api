@@ -30,7 +30,6 @@ export const addDepartment = async (depatment: CreateDepartmentDto) => {
 };
 
 export const editDepartment = async (depatment: UpdateDepartmentDto) => {
-  //console.log(depatment);
   try {
     const { id, ...depatmentData } = depatment;
 
@@ -41,7 +40,6 @@ export const editDepartment = async (depatment: UpdateDepartmentDto) => {
       data: depatmentData,
     });
 
-    console.log(updateDepartment);
     return updateDepartment;
   } catch (error: unknown) {
     if (error instanceof Error) {

@@ -59,7 +59,6 @@ export const fetchLogin = async (req: Request, res: Response) => {
 
 export const forgotPassword = async (req: Request, res: Response) => {
   try {
-    console.log(req.body);
     const existingEmployee = await prisma.employee.findUnique({
       where: {
         email: req.body.email,
