@@ -27,6 +27,7 @@ export const fetchEmployeeById = async (req: Request, res: Response) => {
     const employeeId = Number(req.params.employeeId);
 
     const employees = await getEmployeeById(employeeId);
+
     res.status(200).json(employees);
   } catch (error) {
     res.status(500).json({
