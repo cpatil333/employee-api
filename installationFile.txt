@@ -7,8 +7,19 @@ npx tsc --init
 npx prisma init
 npm install pg
 
+ npm install react-hot-toast      
+ npm install cloudinary multer  
+ npm install cloudinary multer multer-storage-cloudinary           
+
+  npm install bcrypt 
+  npm install -D @types/bcrypt 
 npm install -D tsx
 
+  to token
+  ============
+  i> npm i crypto  
+  
+  npx prisma migrate deploy   
 # DATABASE_URL="postgresql://postgres:abc123@127.0.0.1:5432/employee_db"
 
 // database..
@@ -49,3 +60,6 @@ VALUES
  ***************
 npm install cloudinary multer multer-storage-cloudinary
 npm install -D @types/multer
+
+//convert types all files..
+npm run build
