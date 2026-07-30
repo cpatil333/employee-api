@@ -22,5 +22,34 @@ export declare const getLogin: (login: CreateLogin) => Promise<{
     cityId: number;
     countryId: number;
     stateId: number;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
 } | null>;
+export declare const getforgotPassword: (email: string) => Promise<string>;
+export declare const getResetPassword: (hashedPassword: string, employeeId: number) => Promise<{
+    employeeId: number;
+    name: string;
+    email: string;
+    password: string | null;
+    role: string;
+    phone: string;
+    departmentId: number;
+    designationId: number;
+    status: string;
+    joiningDate: Date;
+    salary: number;
+    gender: string;
+    maritalStatus: string;
+    address1: string;
+    address2: string | null;
+    pincode: string;
+    profileImage: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    cityId: number;
+    countryId: number;
+    stateId: number;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
+}>;
 //# sourceMappingURL=login.service.d.ts.map

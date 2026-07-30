@@ -1,6 +1,6 @@
-import { getLogin } from "../services/login.service.js";
+import { getforgotPassword, getLogin, getResetPassword, } from "../services/login.service.js";
 import prisma from "../../prisma/prisma.js";
-import * as bcrypt from "bcrypt";
+import * as bcrypt from "bcryptjs";
 export const fetchLogin = async (req, res) => {
     try {
         const existingEmployee = await prisma.employee.findUnique({
@@ -38,6 +38,62 @@ export const fetchLogin = async (req, res) => {
     catch (error) {
         return res.status(500).json({
             message: "Login failed",
+            error,
+        });
+    }
+};
+export const forgotPassword = async (req, res) => {
+    try {
+        const existingEmployee = await prisma.employee.findUnique({
+            where: {
+                email: req.body.email,
+            },
+        });
+        if (!existingEmployee) {
+            return res.status(400).json({
+                message: "Invalid email.",
+            });
+        }
+        const token = await getforgotPassword(existingEmployee.email);
+        return res.status(200).json({
+            message: "Reset token generated",
+            token,
+        });
+    }
+    catch (error) {
+        return res.status(500).json({
+            message: "Something went wrong",
+            error,
+        });
+    }
+};
+export const resetPassword = async (req, res) => {
+    try {
+        const { token, password } = req.body;
+        const employee = await prisma.employee.findFirst({
+            where: {
+                resetToken: token,
+            },
+        });
+        if (!employee) {
+            return res.status(400).json({
+                message: "Invalid token",
+            });
+        }
+        if (employee.resetTokenExpiry && employee.resetTokenExpiry < new Date()) {
+            return res.status(400).json({
+                message: "Token expired",
+            });
+        }
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await getResetPassword(hashedPassword, employee.employeeId);
+        return res.status(200).json({
+            message: "Password updated successfully",
+        });
+    }
+    catch (error) {
+        return res.status(500).json({
+            message: "Something went wrong",
             error,
         });
     }

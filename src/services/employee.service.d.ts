@@ -23,6 +23,8 @@ export declare const getEmployees: () => Promise<{
     cityId: number;
     countryId: number;
     stateId: number;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
 }[]>;
 export declare const getEmployeeById: (employeeId: number) => Promise<{
     employeeId: number;
@@ -47,6 +49,8 @@ export declare const getEmployeeById: (employeeId: number) => Promise<{
     cityId: number;
     countryId: number;
     stateId: number;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
 } | null>;
 export declare const addEmployee: (employee: CreateEmployeeDto) => Promise<{
     employeeId: number;
@@ -71,6 +75,8 @@ export declare const addEmployee: (employee: CreateEmployeeDto) => Promise<{
     cityId: number;
     countryId: number;
     stateId: number;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
 }>;
 export declare const udpateEmployee: (employee: UpdateEmployeeDto) => Promise<{
     employeeId: number;
@@ -95,6 +101,8 @@ export declare const udpateEmployee: (employee: UpdateEmployeeDto) => Promise<{
     cityId: number;
     countryId: number;
     stateId: number;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
 }>;
 export declare const deleteEmployeeById: (employeeId: number) => Promise<{
     employeeId: number;
@@ -119,5 +127,7 @@ export declare const deleteEmployeeById: (employeeId: number) => Promise<{
     cityId: number;
     countryId: number;
     stateId: number;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
 }>;
 //# sourceMappingURL=employee.service.d.ts.map

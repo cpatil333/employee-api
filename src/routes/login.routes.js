@@ -1,6 +1,8 @@
 import { Router } from "express";
-import { fetchLogin } from "../controllers/login.controller.js";
+import { fetchLogin, forgotPassword, resetPassword, } from "../controllers/login.controller.js";
 const router = Router();
 router.post("/", fetchLogin);
+router.post("/forgot-password", forgotPassword);
+router.post("/reset-password", resetPassword);
 export default router;
 //# sourceMappingURL=login.routes.js.map
