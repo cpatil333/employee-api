@@ -7,6 +7,7 @@ import stateRoutes from "../src/routes/state.routes.js";
 import cityRoutes from "../src/routes/city.routes.js";
 import employeeRoutes from "../src/routes/employee.routes.js";
 import loginRoutes from "../src/routes/login.routes.js";
+import dashboardRoutes from "../src/routes/dashboard.routes.js";
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use("/api/states", stateRoutes);
 app.use("/api/cities", cityRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/login", loginRoutes);
+app.use("/api/dashboard/employees", dashboardRoutes);
 
 export default app;

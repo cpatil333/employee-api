@@ -1,4 +1,5 @@
 import prisma from "../../prisma/prisma.js";
+
 export const getDepartments = async () => {
     return await prisma.department.findMany({
         orderBy: {
@@ -6,6 +7,7 @@ export const getDepartments = async () => {
         },
     });
 };
+
 export const getDepartment = async (departmentId) => {
     return await prisma.department.findFirst({
         where: {
@@ -31,7 +33,6 @@ export const editDepartment = async (depatment) => {
             },
             data: depatmentData,
         });
-        ;
         return updateDepartment;
     }
     catch (error) {

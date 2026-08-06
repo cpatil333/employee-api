@@ -63,3 +63,56 @@ npm install -D @types/multer
 
 //convert types all files..
 npm run build
+
+/////////////////
+export const getEmployeesByDepartmentService = async () => {
+  const departments = await prisma.department.findMany({
+    select: {
+      id: true,
+      name: true,
+      _count: {
+        select: { employees: true },
+      },
+    },
+  });
+
+  return departments.map((dept) => ({
+    departmentId: dept.id,
+    department: dept.name,
+    count: dept._count.employees,
+  }));
+};
+
+export const getEmployeesByGenderService = async () => {
+  const genders = await prisma.employee.findMany({
+    select: {
+      id: true,
+      name: true,
+      _count: {
+        select: { gender: true },
+      },
+    },
+  });
+  return genders.map((emp) => ({
+    employeeId: emp.id,
+    name: emp.name,
+    count: emp._count.gender,
+  }));
+};
+
+export const getEmployeesByStatusService = async () => {
+  const status = await prisma.employee.findMany({
+    select: {
+      id: true,
+      name: true,
+      _count: {
+        select: { status: true },
+      },
+    },
+  });
+  return status.map((emp) => ({
+    employeeId: emp.id,
+    name: emp.name,
+    count: emp._count.status,
+  }));
+};
