@@ -3,10 +3,12 @@ import { addEmployee, deleteEmployeeById, getEmployeeById, getEmployees, udpateE
 import prisma from "../../prisma/prisma.js";
 export const fetchEmployees = async (req, res) => {
     try {
+        console.log("Employees API called");
         const employees = await getEmployees();
         res.status(200).json(employees);
     }
     catch (error) {
+        console.error(error);
         res.status(500).json({
             message: "Failed to fetch Employees",
         });

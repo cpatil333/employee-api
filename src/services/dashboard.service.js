@@ -22,8 +22,8 @@ export const getEmployeesByDepartmentService = async (departmentId) => {
         },
     });
     return employees.map((emp) => ({
-        departmentId: emp.department.id,
-        employeeName: emp.name,
+        employeeId: emp.employeeId,
+        name: emp.name,
         department: emp.department.name,
         designation: emp.designation.name,
     }));
@@ -52,7 +52,7 @@ export const getEmployeesByGenderService = async (gender) => {
     });
     return genders.map((emp) => ({
         employeeId: emp.employeeId,
-        employeeName: emp.name,
+        name: emp.name,
         department: emp.department.name,
         designation: emp.designation.name,
     }));
@@ -81,7 +81,7 @@ export const getEmployeesByStatusService = async (status) => {
     });
     return statusData.map((emp) => ({
         employeeId: emp.employeeId,
-        employeeName: emp.name,
+        name: emp.name,
         department: emp.department.name,
         designation: emp.designation.name,
     }));

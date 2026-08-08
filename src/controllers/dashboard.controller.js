@@ -13,7 +13,8 @@ export const getEmployeesByDepartment = async (req, res) => {
 };
 export const getEmployeesByGender = async (req, res) => {
     try {
-        const { gender } = req.query;
+        // console.log(req.params.gender);
+        const gender = req.params.gender;
         const response = await getEmployeesByGenderService(gender);
         return res.status(200).json(response);
     }
@@ -25,7 +26,7 @@ export const getEmployeesByGender = async (req, res) => {
 };
 export const getEmployeesByStatus = async (req, res) => {
     try {
-        const { status } = req.query;
+        const status = req.params.status;
         const response = await getEmployeesByStatusService(status);
         return res.status(200).json(response);
     }

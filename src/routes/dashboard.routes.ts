@@ -7,7 +7,7 @@ import {
 
 const router = Router();
 router.get("/department/:departmentId", getEmployeesByDepartment);
-router.get("/gender/:genderId", getEmployeesByGender);
+router.get("/gender/:gender", getEmployeesByGender);
 router.get("/status/:status", getEmployeesByStatus);
 
 export default router;

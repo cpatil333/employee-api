@@ -1,18 +1,18 @@
 export declare const getEmployeesByDepartmentService: (departmentId: number) => Promise<{
-    departmentId: number;
-    employeeName: string;
+    employeeId: number;
+    name: string;
     department: string;
     designation: string;
 }[]>;
 export declare const getEmployeesByGenderService: (gender: string) => Promise<{
     employeeId: number;
-    employeeName: string;
+    name: string;
     department: string;
     designation: string;
 }[]>;
 export declare const getEmployeesByStatusService: (status: string) => Promise<{
     employeeId: number;
-    employeeName: string;
+    name: string;
     department: string;
     designation: string;
 }[]>;

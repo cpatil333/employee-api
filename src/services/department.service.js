@@ -1,5 +1,4 @@
 import prisma from "../../prisma/prisma.js";
-
 export const getDepartments = async () => {
     return await prisma.department.findMany({
         orderBy: {
@@ -7,7 +6,6 @@ export const getDepartments = async () => {
         },
     });
 };
-
 export const getDepartment = async (departmentId) => {
     return await prisma.department.findFirst({
         where: {
