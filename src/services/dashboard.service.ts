@@ -1,4 +1,5 @@
 import prisma from "../../prisma/prisma.js";
+import type { ExportFilter } from "../dto/ExportFilterDto.js";
 
 export const getEmployeesByDepartmentService = async (departmentId: number) => {
   const employees = await prisma.employee.findMany({
@@ -89,5 +90,37 @@ export const getEmployeesByStatusService = async (status: string) => {
     name: emp.name,
     department: emp.department.name,
     designation: emp.designation.name,
+  }));
+};
+
+export const getEmployeesForExport = async (options: ExportFilter) => {
+  const filters = {
+    ...(options.departmentId && {
+      departmentId: options.departmentId,
+    }),
+    ...(options.gender && {
+      gender: options.gender,
+    }),
+    ...(options.status && {
+      status: options.status,
+    }),
+  };
+  const employees = await prisma.employee.findMany({
+    where: filters,
+    select: {
+      name: true,
+      department: true,
+      designation: true,
+      gender: true,
+      status: true,
+    },
+  });
+
+  return employees.map((emp) => ({
+    name: emp.name,
+    department: emp.department.name,
+    designation: emp.designation.name,
+    gender: emp.gender,
+    status: emp.status,
   }));
 };

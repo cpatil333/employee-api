@@ -86,4 +86,35 @@ export const getEmployeesByStatusService = async (status) => {
         designation: emp.designation.name,
     }));
 };
+export const getEmployeesForExport = async (options) => {
+    console.log(options);
+    const filters = {
+        ...(options.departmentId && {
+            departmentId: options.departmentId,
+        }),
+        ...(options.gender && {
+            gender: options.gender,
+        }),
+        ...(options.status && {
+            status: options.status,
+        }),
+    };
+    const employees = await prisma.employee.findMany({
+        where: filters,
+        select: {
+            name: true,
+            department: true,
+            designation: true,
+            gender: true,
+            status: true,
+        },
+    });
+    return employees.map((emp) => ({
+        name: emp.name,
+        department: emp.department.name,
+        designation: emp.designation.name,
+        gender: emp.gender,
+        status: emp.status,
+    }));
+};
 //# sourceMappingURL=dashboard.service.js.map

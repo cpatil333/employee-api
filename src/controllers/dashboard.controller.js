@@ -1,4 +1,4 @@
-import { getEmployeesByDepartmentService, getEmployeesByGenderService, getEmployeesByStatusService, } from "../services/dashboard.service.js";
+import { getEmployeesByDepartmentService, getEmployeesByGenderService, getEmployeesByStatusService, getEmployeesForExport, } from "../services/dashboard.service.js";
 export const getEmployeesByDepartment = async (req, res) => {
     try {
         const departmentId = req.params.departmentId;
@@ -13,7 +13,7 @@ export const getEmployeesByDepartment = async (req, res) => {
 };
 export const getEmployeesByGender = async (req, res) => {
     try {
-        // console.log(req.params.gender);
+
         const gender = req.params.gender;
         const response = await getEmployeesByGenderService(gender);
         return res.status(200).json(response);
@@ -33,6 +33,27 @@ export const getEmployeesByStatus = async (req, res) => {
     catch (error) {
         return res.status(500).json({
             message: "Failed to fetch Status summary",
+        });
+    }
+};
+export const getEmployeesExport = async (req, res) => {
+    try {
+        const filters = {};
+        if (req.query.departmentId) {
+            filters.departmentId = Number(req.query.departmentId);
+        }
+        if (req.query.gender) {
+            filters.gender = String(req.query.gender);
+        }
+        if (req.query.status) {
+            filters.status = String(req.query.status);
+        }
+        const response = await getEmployeesForExport(filters);
+        return res.status(200).json(response);
+    }
+    catch (error) {
+        return res.status(500).json({
+            message: "Failed to fetch Employee's data",
         });
     }
 };
