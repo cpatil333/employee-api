@@ -87,7 +87,6 @@ export const getEmployeesByStatusService = async (status) => {
     }));
 };
 export const getEmployeesForExport = async (options) => {
-    console.log(options);
     const filters = {
         ...(options.departmentId && {
             departmentId: options.departmentId,

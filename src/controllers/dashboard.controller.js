@@ -13,7 +13,6 @@ export const getEmployeesByDepartment = async (req, res) => {
 };
 export const getEmployeesByGender = async (req, res) => {
     try {
-
         const gender = req.params.gender;
         const response = await getEmployeesByGenderService(gender);
         return res.status(200).json(response);
