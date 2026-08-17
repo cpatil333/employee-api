@@ -5,6 +5,7 @@ import {
   deleteEmployeeById,
   getEmployeeById,
   getEmployees,
+  getEmployeesByDepartmentId,
   udpateEmployee,
 } from "../services/employee.service.js";
 import type { CreateEmployeeDto } from "../dto/CreateEmployeeDto.js";
@@ -135,6 +136,23 @@ export const deleteEmployee = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       message: "Failed to delete Employee",
+    });
+  }
+};
+
+export const fetchEmployeeByDepartmentId = async (
+  req: Request,
+  res: Response,
+) => {
+  try {
+    const departmentId = Number(req.params.departmentId);
+
+    const employees = await getEmployeesByDepartmentId(departmentId);
+
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to fetch Employees",
     });
   }
 };

@@ -8,12 +8,13 @@ import cityRoutes from "../src/routes/city.routes.js";
 import employeeRoutes from "../src/routes/employee.routes.js";
 import loginRoutes from "../src/routes/login.routes.js";
 import dashboardRoutes from "../src/routes/dashboard.routes.js";
+import path from "node:path";
 const app = express();
 //middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 //routes
 app.use("/api/departments", departmentRoutes);
 app.use("/api/designations", designationRoutes);

@@ -5,6 +5,7 @@ import {
   fetchEmployeeById,
   fetchEmployees,
   updateEmployee,
+  fetchEmployeeByDepartmentId,
 } from "../controllers/employee.controller.js";
 import upload from "../config/multer.js";
 //import { upload } from "../middleware/upload.middleware.js";
@@ -19,5 +20,6 @@ router.get("/:employeeId", fetchEmployeeById);
 router.post("/", createEmployee);
 router.put("/:employeeId", updateEmployee);
 router.delete("/:employeeId", deleteEmployee);
+router.get("/department/:departmentId", fetchEmployeeByDepartmentId);
 
 export default router;

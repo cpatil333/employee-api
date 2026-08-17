@@ -47,3 +47,12 @@ export const deleteEmployeeById = async (employeeId: number) => {
   });
   return employee;
 };
+
+export const getEmployeesByDepartmentId = async (departmentId: number) => {
+  const employee = prisma.employee.findMany({
+    where: {
+      departmentId,
+    },
+  });
+  return employee;
+};

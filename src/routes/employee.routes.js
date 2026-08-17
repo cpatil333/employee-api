@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createEmployee, deleteEmployee, fetchEmployeeById, fetchEmployees, updateEmployee, } from "../controllers/employee.controller.js";
+import { createEmployee, deleteEmployee, fetchEmployeeById, fetchEmployees, updateEmployee, fetchEmployeeByDepartmentId, } from "../controllers/employee.controller.js";
 import upload from "../config/multer.js";
 //import { upload } from "../middleware/upload.middleware.js";
 const router = Router();
@@ -10,5 +10,6 @@ router.get("/:employeeId", fetchEmployeeById);
 router.post("/", createEmployee);
 router.put("/:employeeId", updateEmployee);
 router.delete("/:employeeId", deleteEmployee);
+router.get("/department/:departmentId", fetchEmployeeByDepartmentId);
 export default router;
 //# sourceMappingURL=employee.routes.js.map

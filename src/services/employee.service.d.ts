@@ -130,4 +130,30 @@ export declare const deleteEmployeeById: (employeeId: number) => Promise<{
     resetToken: string | null;
     resetTokenExpiry: Date | null;
 }>;
+export declare const getEmployeesByDepartmentId: (departmentId: number) => Promise<{
+    employeeId: number;
+    name: string;
+    email: string;
+    phone: string;
+    departmentId: number;
+    designationId: number;
+    status: string;
+    joiningDate: Date;
+    salary: number;
+    maritalStatus: string;
+    address1: string;
+    address2: string | null;
+    pincode: string;
+    createdAt: Date;
+    updatedAt: Date;
+    cityId: number;
+    countryId: number;
+    stateId: number;
+    profileImage: string | null;
+    gender: string;
+    password: string | null;
+    role: string;
+    resetToken: string | null;
+    resetTokenExpiry: Date | null;
+}[]>;
 //# sourceMappingURL=employee.service.d.ts.map

@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { addEmployee, deleteEmployeeById, getEmployeeById, getEmployees, udpateEmployee, } from "../services/employee.service.js";
+import { addEmployee, deleteEmployeeById, getEmployeeById, getEmployees, getEmployeesByDepartmentId, udpateEmployee, } from "../services/employee.service.js";
 import prisma from "../../prisma/prisma.js";
 export const fetchEmployees = async (req, res) => {
     try {
@@ -116,6 +116,18 @@ export const deleteEmployee = async (req, res) => {
     catch (error) {
         res.status(500).json({
             message: "Failed to delete Employee",
+        });
+    }
+};
+export const fetchEmployeeByDepartmentId = async (req, res) => {
+    try {
+        const departmentId = Number(req.params.departmentId);
+        const employees = await getEmployeesByDepartmentId(departmentId);
+        res.status(200).json(employees);
+    }
+    catch (error) {
+        res.status(500).json({
+            message: "Failed to fetch Employees",
         });
     }
 };
